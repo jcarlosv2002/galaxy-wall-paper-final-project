@@ -67,3 +67,22 @@ class Particle():
         rotated = pygame.transform.rotate(self.surface, self.rotation)
         rect = rotated.get_rect(center=(self.pos[0], self.pos[1])) 
         surface.blit(rotated, rect.topleft) 
+#class galaxy: manages multiple particles and color palettes 
+class Galaxy(): 
+    # set up galaxy properties 
+    def __init__(self, center): 
+        self.center = center 
+        self.particles = [] 
+        self.spawn_rate = 5 
+        self.size = 4 
+        self.palette_index = 0 
+
+    #define multiple color palettes
+        self.palettes = [
+            [pygame.Color(255, 255, 255), pygame.Color(200,200 ,255),
+             pygame.Color(255,200, 255), pygame.Color(255, 255, 150)],
+            [pygame.Color(255, 0, 0), pygame.Color(0, 255, 255),
+              pygame.Color(255,0, 255), pygame.Color(255, 255, 0)],
+            [pygame.Color(0, 255, 0), pygame.Color(255, 255, 0),
+              pygame.Color(255, 128, 0), pygame.Color(128, 0, 255)] 
+        ]
