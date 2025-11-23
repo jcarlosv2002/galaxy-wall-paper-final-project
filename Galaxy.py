@@ -26,7 +26,7 @@ class Particle():
         offset = random.uniform(-arm_spread, arm_spread)
         self.angle = (2 * math.pi * arm / arm_count) + theta + offset
         self.radious = 20 + 15 * theta 
-        
+
 
         #rotation setup 
         self.rotation = 0 
@@ -46,7 +46,9 @@ class Particle():
         if self.age >= self.life:
             self.dead = True
         self.alpha = 255 * (1 - (self.age / self.life)) #particle fades out over time and update
-        
+        self.rotation += self.rotation_speed * (dt / 1000)
+        self.pos = self.compute_position() 
+
         #update spiral angle and rotation 
         self.angle += self.angular_speed * (dt / 1000)
         self.rotation += self.rotation_speed * (dt / 1000)
