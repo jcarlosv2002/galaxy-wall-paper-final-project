@@ -111,3 +111,13 @@ class Galaxy():
         #draw all particles 
         for p in self.particles: 
             p.draw(surface)  
+
+def main(): 
+    # pygame and screen
+    pygame.init()
+    pygame.display.set_caption("milky way galaxy") 
+    resolution = (800, 600) 
+    screen = pygame.display.set_mode(resolution, pygame.FULLSCREEN)
+    clock = pygame.time.Clock() 
+    galaxy = Galaxy(center=(resolution[0]// 2, resoluiton [1]//2)) 
+    running = True 
