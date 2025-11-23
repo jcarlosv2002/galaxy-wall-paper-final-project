@@ -9,7 +9,7 @@ import math
 
 #class particle: represents a single star in the galaxy
 class Particle(): 
-    def __init__(self, size=4, life=3000, palette=None): 
+    def __init__(self, center, size=4, life=3000, palette=None): 
         self.center = center  
         self.size = size
         self.life = life
@@ -59,7 +59,7 @@ class Particle():
         pygame.draw.polygon(surface, self.color, points)
         return surface 
 
-    def draw(self, sruface): 
+    def draw(self, surface): 
         # draw particle on screen 
         if self.dead: 
             return 
@@ -116,10 +116,10 @@ def main():
     # pygame and screen
     pygame.init()
     pygame.display.set_caption("milky way galaxy") 
-    resolution = (800, 600) 
-    screen = pygame.display.set_mode(resolution, pygame.FULLSCREEN)
-    clock = pygame.time.Clock() 
-    galaxy = Galaxy(center=(resolution[0]// 2, resoluiton [1]//2)) 
+    resolution = (1920, 1080) 
+    screen = pygame.display.set_mode(resolution, pygame.FULLSCREEN) 
+    galaxy = Galaxy(center=(resolution[0]// 2, resolution[1]//2)) 
+    clock = pygame.time.Clock()
     running = True 
     
     #game loop 
@@ -143,4 +143,3 @@ def main():
 
 if __name__ == "__main__": 
     main() 
-    
