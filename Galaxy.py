@@ -86,3 +86,23 @@ class Galaxy():
             [pygame.Color(0, 255, 0), pygame.Color(255, 255, 0),
               pygame.Color(255, 128, 0), pygame.Color(128, 0, 255)] 
         ]
+    def current_palette(self): 
+        #return the current color palette
+        return self.palettes[self.palette_index] 
+    
+    def update(self, dt): 
+        #update galaxy each frame 
+        self._spawn_particles()
+        self.particles = [p for p in self.particles if not p.dead]
+        for particle in self.particles: 
+            particle.update(dt)
+
+    def _spawn_particles(self):
+        #spawn new particles using current palette
+        for _ in range(self.spawn_rate):
+            particle = Particle(self.center, size=self.size, palette=self.current_palette())
+            self.particles.append(particle)
+
+    def shift_palette(self): 
+        #shift to the next color palette
+        self.palette_index = (self.palette_index + 1) % len(self.palettes)
