@@ -121,3 +121,15 @@ def main():
     clock = pygame.time.Clock() 
     galaxy = Galaxy(center=(resolution[0]// 2, resoluiton [1]//2)) 
     running = True 
+    
+    #game loop 
+    while running:
+        dt = clock.tick(60)
+        for event in pygame.event.get(): 
+            if event.type == pygame.QUIT: 
+                running = False 
+            elif event.type == pygame.KEYDOWN: 
+                if event.key == pygame.K_ESCAPE: 
+                    running = False 
+                elif event.key == pygame.MOUSEBUTTONDOWN: 
+                    galaxy.shift_palette()
