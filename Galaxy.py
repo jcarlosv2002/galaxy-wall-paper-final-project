@@ -133,3 +133,14 @@ def main():
                     running = False 
                 elif event.key == pygame.MOUSEBUTTONDOWN: 
                     galaxy.shift_palette()
+
+        galaxy.update(dt)
+        screen.fill((0, 0, 10))
+        galaxy.draw(screen)
+        pygame.display.flip()
+
+    pygame.quit()
+
+if __name__ == "__main__": 
+    main() 
+    
