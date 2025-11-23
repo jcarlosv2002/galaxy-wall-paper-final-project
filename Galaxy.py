@@ -53,7 +53,7 @@ class Particle():
         surface = pygame.Surface((self.size, self.size), pygame.SRCALPHA)
         points = [
             (self.size //2, 0),
-            (self.size. self.size),
+            (self.size, self.size),
             (0, self.size)
         ]
         pygame.draw.polygon(surface, self.color, points)
