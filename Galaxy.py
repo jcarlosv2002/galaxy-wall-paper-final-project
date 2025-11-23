@@ -9,7 +9,7 @@ import math
 
 #class particle: represents a single star in the galaxy
 class Particle(): 
-    def __init__(self, center, size=4, life=3000, palette=None): 
+    def __init__(self, center, size=4, life=3000, palette=None, arm_count=4, arm_spread=0.5): 
         self.center = center  
         self.size = size
         self.life = life
@@ -20,10 +20,13 @@ class Particle():
         # choose random color from palette
         self.color = random.choice(palette)
 
-        #spiral motion set up 
-        self.angle = random.uniform(0,360) #starting angle 
-        self.radius = random.uniform(0, 300) #distance from center
-        self.angular_speed = random.uniform(10, 60) #degrees per second
+        #spiral arm logic 
+        arm = random.randint(0, arm_count - 1)
+        theta = random.uniform(0, 6 * math.pi)
+        offset = random.uniform(-arm_spread, arm_spread)
+        self.angle = (2 * math.pi * arm / arm_count) + theta + offset
+        self.radious = 20 + 15 * theta 
+        
 
         #rotation setup 
         self.rotation = 0 
