@@ -106,3 +106,8 @@ class Galaxy():
     def shift_palette(self): 
         #shift to the next color palette
         self.palette_index = (self.palette_index + 1) % len(self.palettes)
+
+    def draw(self, surface): 
+        #draw all particles 
+        for p in self.particles: 
+            p.draw(surface)  
