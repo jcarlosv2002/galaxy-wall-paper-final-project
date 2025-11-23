@@ -49,11 +49,6 @@ class Particle():
         self.rotation += self.rotation_speed * (dt / 1000)
         self.pos = self.compute_position() 
 
-        #update spiral angle and rotation 
-        self.angle += self.angular_speed * (dt / 1000)
-        self.rotation += self.rotation_speed * (dt / 1000)
-        self.pos = self.compute_position()
-    
     def update_surface(self): 
         surface = pygame.Surface((self.size, self.size), pygame.SRCALPHA)
         points = [
@@ -95,6 +90,10 @@ class Galaxy():
         #return the current color palette
         return self.palettes[self.palette_index] 
     
+    def shift_palette(self):
+        #shift to the next color palette
+        self.palette_index = (self.palette_index + 1) % len(self.palettes)
+    
     def update(self, dt): 
         #update galaxy each frame 
         self._spawn_particles()
@@ -105,7 +104,13 @@ class Galaxy():
     def _spawn_particles(self):
         #spawn new particles using current palette
         for _ in range(self.spawn_rate):
-            particle = Particle(self.center, size=self.size, palette=self.current_palette())
+            particle = Particle (
+                center=self.center,
+                size=self.size,
+                palette=self.current_paletter(), 
+                arm_count=self.arm_count, 
+                arm_spread=self.arm_spread
+             ) 
             self.particles.append(particle)
 
     def shift_palette(self): 
